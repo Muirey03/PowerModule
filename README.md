@@ -72,7 +72,11 @@ If you need help with anything, feel free to message me on [reddit](https://www.
 
 ## Credits:
 [Muirey03](https://www.reddit.com/user/muirey03) (that's me) - For creating the tweak
+
 [opa334](https://www.reddit.com/user/opa334/) - For making CCSupport and for helping me disassemble the Connectivity Module
+
 [macs](https://www.reddit.com/user/thecoderkiller) - For making the icon glyphs used in PowerModule
+
 [The Auxilium Team](https://discord.gg/E9T5gDF) - For allowing me to use their repo and for helping me with some things I was stuck on
+
 [THE_PINPAL614](https://www.reddit.com/user/THE_PINPAL614) - For [the initial concept](https://www.reddit.com/r/jailbreak/comments/8kb0v1/request_2x2_power_module_for_ios_11/?utm_content=title&utm_medium=user&utm_source=reddit&utm_name=frontpage).
