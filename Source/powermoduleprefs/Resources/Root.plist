@@ -58,6 +58,35 @@
 			<key>label</key>
 			<string>Safemode Confirmation?</string>
 		</dict>
+
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Created By:</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>action</key>
+			<string>creatorMethod</string>
+			<key>label</key>
+			<string>Muirey03 (@Muirey03)</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Icons Created By:</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>action</key>
+			<string>creditsMethod</string>
+			<key>label</key>
+			<string>Macs (u/thecoderkiller)</string>
+		</dict>
 	</array>
 	<key>title</key>
 	<string>PowerModule</string>

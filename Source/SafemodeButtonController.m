@@ -21,7 +21,7 @@
     self.view.frame = CGRectMake(leftF, rightF, bWidth, bWidth);
 }
 
-//this is what is called when the button is pressed, if you want to use it as a toggle, call [self buttonTapped:arg1]; - arg1 is where the button is selected or not
+//this is what is called when the button is pressed, if you want to use it as a toggle, call [super buttonTapped:arg1]; - arg1 is where the button is selected or not
 -(void)buttonTapped:(id)arg1
 {
     if ([[prefsDict valueForKey:@"SafemodeConf"] boolValue])

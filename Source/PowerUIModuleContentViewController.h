@@ -10,6 +10,9 @@
 @property (nonatomic,readonly) CGFloat preferredExpandedContentHeight;
 @property (nonatomic,readonly) CGFloat preferredExpandedContentWidth;
 
+//not really sure what this is tbh
+@property (nonatomic,readonly) BOOL providesOwnPlatter;
+
 //width of the module
 @property CGFloat mWidth;
 

@@ -1,7 +1,7 @@
 Package: com.muirey03.powermodule
 Name: PowerModule
 Depends: mobilesubstrate, com.opa334.ccsupport
-Version: 1.0.0
+Version: 1.0.1
 Architecture: iphoneos-arm
 Description: A Control Center Module
 Author: Muirey03
