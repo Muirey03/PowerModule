@@ -4,6 +4,7 @@
 //the width of the module, set by the moduleViewController in it's viewDidLoadSubview method
 @property CGFloat mWidth;
 
+@property BOOL isExpanded;
 //sends the device into safemode
 -(void)safemode;
 @end

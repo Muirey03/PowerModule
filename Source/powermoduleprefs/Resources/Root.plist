@@ -58,6 +58,30 @@
 			<key>label</key>
 			<string>Safemode Confirmation?</string>
 		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.muirey03.powermoduleprefs</string>
+			<key>key</key>
+			<string>LockConf</string>
+			<key>label</key>
+			<string>Lock screen Confirmation?</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.muirey03.powermoduleprefs</string>
+			<key>key</key>
+			<string>PowerDownConf</string>
+			<key>label</key>
+			<string>Power down Confirmation?</string>
+		</dict>
 
 		<dict>
 			<key>cell</key>

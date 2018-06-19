@@ -10,13 +10,17 @@
 //here is where we set the width of the CCUILabeledRoundButton - the width of CCUIRoundButton is set automatically so we just use that to set the width of the CCUILabeledRoundButton
 -(void)viewDidLayoutSubviews
 {
-    //get the width of the CCUIRoundButton
-    CGFloat bWidth = [[self buttonContainer] buttonView].frame.size.width;
-    //this is the smaller distance (from the left of the module to the left of the top-left button)
-    CGFloat leftF = ([self mWidth] - (2 * bWidth)) / 3;
+    //this will be true if we are in the collapsed view, we don't want to position the buttons here if we are in the expanded view - that will be done in willTransitionToExpandedContentMode
+    if (![self isExpanded] || self.view.window.bounds.size.width == 0)
+    {
+        //get the width of the CCUIRoundButton
+        CGFloat bWidth = [[self buttonContainer] buttonView].frame.size.width;
+        //this is the smaller distance (from the left of the module to the left of the top-left button)
+        CGFloat leftF = ([self mWidth] - (2 * bWidth)) / 3;
 
-    //each button is positioned differently - this one is the top-left - we also need to set the width here
-    self.view.frame = CGRectMake(leftF, leftF, bWidth, bWidth);
+        //each button is positioned differently - this one is the top-left - we also need to set the width here
+        self.view.frame = CGRectMake(leftF, leftF, bWidth, bWidth);
+    }
 }
 
 //this is what is called when the button is pressed, if you want to use it as a toggle, call [super buttonTapped:arg1]; - arg1 is where the button is selected or not

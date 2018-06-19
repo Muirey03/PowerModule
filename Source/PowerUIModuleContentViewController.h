@@ -4,6 +4,8 @@
 #import "RebootButtonController.h"
 #import "SafemodeButtonController.h"
 #import "UICacheButtonController.h"
+#import "PowerDownButtonController.h"
+#import "LockButtonController.h"
 
 @interface PowerUIModuleContentViewController : UIViewController <CCUIContentModuleContentViewController>
 //these are the dimensions of the module once its expanded
@@ -21,6 +23,8 @@
 @property RebootButtonController* rebootBtn;
 @property UICacheButtonController* UICacheBtn;
 @property SafemodeButtonController* safemodeBtn;
+@property LockButtonController* lockBtn;
+@property PowerDownButtonController* powerDownBtn;
 
 //this is what I'm using to set mWidth
 -(void)getWidth;
