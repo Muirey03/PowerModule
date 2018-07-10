@@ -31,6 +31,17 @@
         //each button is positioned differently - this one is the top-right - we also need to set the width here
         self.view.frame = CGRectMake(rightF, [self mWidth], bWidth, bWidth);
     }
+
+    //dirty ass fix for the background color being wrong:
+    int i = 0;
+    for (UIView* v in self.buttonContainer.buttonView.subviews)
+    {
+        if ([v isMemberOfClass:[NSClassFromString(@"MTMaterialView") class]])
+        {
+            v.alpha = i ? 0 : v.alpha;
+            i++;
+        }
+    }
 }
 
 //this is what is called when the button is pressed, if you want to use it as a toggle, call [self buttonTapped:arg1]; - arg1 is where the button is selected or not

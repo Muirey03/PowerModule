@@ -15,16 +15,15 @@
 //here is where we set the width of the CCUILabeledRoundButton - the width of CCUIRoundButton is set automatically so we just use that to set the width of the CCUILabeledRoundButton
 -(void)viewDidLayoutSubviews
 {
-    //this will be true if we are in the collapsed view, we don't want to position the buttons here if we are in the expanded view - that will be done in willTransitionToExpandedContentMode
-    if (![self isExpanded] && [self mWidth] != 0)
+    //dirty ass fix for the background color being wrong:
+    int i = 0;
+    for (UIView* v in self.buttonContainer.buttonView.subviews)
     {
-        //get the width of the CCUIRoundButton
-        CGFloat bWidth = [[self buttonContainer] buttonView].frame.size.width;
-        //this is the smaller distance (from the left of the module to the left of the top-left button)
-        CGFloat leftF = ([self mWidth] - (2 * bWidth)) / 3;
-
-        //each button is positioned differently - this one is the top-right - we also need to set the width here
-        self.view.frame = CGRectMake(leftF, [self mWidth], bWidth, bWidth);
+        if ([v isMemberOfClass:[NSClassFromString(@"MTMaterialView") class]])
+        {
+            v.alpha = i ? 0 : v.alpha;
+            i++;
+        }
     }
 }
 
