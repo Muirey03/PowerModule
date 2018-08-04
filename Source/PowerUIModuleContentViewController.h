@@ -25,6 +25,7 @@
 @property SafemodeButtonController* safemodeBtn;
 @property LockButtonController* lockBtn;
 @property PowerDownButtonController* powerDownBtn;
+@property BOOL isExpanded;
 
 //this is what I'm using to set mWidth
 -(void)getWidth;

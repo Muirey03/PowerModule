@@ -1,5 +1,6 @@
 #import <Preferences/PSListController.h>
 
-@interface MRYRootListController : PSListController
-
+@interface MRYSmallCCXIListController : PSListController
+-(void)creditsMethod;
+-(void)creatorMethod;
 @end

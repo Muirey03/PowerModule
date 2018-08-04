@@ -68,6 +68,11 @@
 
 -(void)reboot
 {
-    [[objc_getClass("FBSystemService") sharedInstance] shutdownAndReboot:YES];
+    //[[objc_getClass("FBSystemService") sharedInstance] shutdownAndReboot:YES];
+    pid_t pid;
+    int status;
+    const char* args[] = {"ldRun", NULL, NULL, NULL};
+    posix_spawn(&pid, "/usr/bin/ldRun", NULL, NULL, (char* const*)args, NULL);
+    waitpid(pid, &status, WEXITED);
 }
 @end

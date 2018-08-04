@@ -84,21 +84,24 @@
         _preferredExpandedContentWidth = [self mWidth] * 2.05;
         _preferredExpandedContentHeight = [self preferredExpandedContentWidth] * 1.4;
 
-        //Place respringBtn:
-        [[self respringBtn] setMWidth:[self mWidth]];
-        [self.view addSubview:[self respringBtn].view];
+        if (![self isExpanded])
+        {
+            //Place respringBtn:
+            [[self respringBtn] setMWidth:[self mWidth]];
+            [self.view addSubview:[self respringBtn].view];
 
-        //Place rebootBtn:
-        [[self rebootBtn] setMWidth:[self mWidth]];
-        [self.view addSubview:[self rebootBtn].view];
+            //Place rebootBtn:
+            [[self rebootBtn] setMWidth:[self mWidth]];
+            [self.view addSubview:[self rebootBtn].view];
 
-        //Place safemodeBtn:
-        [[self safemodeBtn] setMWidth:[self mWidth]];
-        [self.view addSubview:[self safemodeBtn].view];
+            //Place safemodeBtn:
+            [[self safemodeBtn] setMWidth:[self mWidth]];
+            [self.view addSubview:[self safemodeBtn].view];
 
-        //Place UICacheBtn:
-        [[self UICacheBtn] setMWidth:[self mWidth]];
-        [self.view addSubview:[self UICacheBtn].view];
+            //Place UICacheBtn:
+            [[self UICacheBtn] setMWidth:[self mWidth]];
+            [self.view addSubview:[self UICacheBtn].view];
+        }
     }
 }
 
@@ -111,6 +114,15 @@
 //called before transitioning to the expanded content mode
 -(void)willTransitionToExpandedContentMode:(BOOL)willTransition
 {
+    [[self respringBtn] setIsExpanded:willTransition];
+    [[self UICacheBtn] setIsExpanded:willTransition];
+    [[self safemodeBtn] setIsExpanded:willTransition];
+    [[self rebootBtn] setIsExpanded:willTransition];
+    [[self lockBtn] setIsExpanded:willTransition];
+    [[self powerDownBtn] setIsExpanded:willTransition];
+
+    [self setIsExpanded:willTransition];
+
     //the width of each button
     CGFloat bWidth = [self respringBtn].view.frame.size.width;
     if (willTransition)
@@ -165,12 +177,5 @@
     [[self rebootBtn] setLabelsVisible:willTransition];
     [[self lockBtn] setLabelsVisible:willTransition];
     [[self powerDownBtn] setLabelsVisible:willTransition];
-
-    [[self respringBtn] setIsExpanded:willTransition];
-    [[self UICacheBtn] setIsExpanded:willTransition];
-    [[self safemodeBtn] setIsExpanded:willTransition];
-    [[self rebootBtn] setIsExpanded:willTransition];
-    [[self lockBtn] setIsExpanded:willTransition];
-    [[self powerDownBtn] setIsExpanded:willTransition];
 }
 @end

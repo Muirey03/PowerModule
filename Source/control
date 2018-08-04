@@ -1,10 +1,11 @@
 Package: com.muirey03.powermodule
 Name: PowerModule
-Depends: mobilesubstrate, com.opa334.ccsupport
-Version: 1.1.1
+Depends: mobilesubstrate, com.opa334.ccsupport, preferenceloader, com.midnightchips.ldrun
+Version: 1.2.2
 Architecture: iphoneos-arm
 Description: Group different utility actions into one control center module (iOS 11 only)
 Author: Muirey03
 Section: Control Center (Modules)
 Maintainer: Muirey03
-Icon: file:///Library/ControlCenter/Bundles/PowerModule.bundle/SettingsIcon@3x.png
+Icon: https://auxiliumdev.com/depictions/powermodule/image.jpg
+Depiction: https://auxiliumdev.com/depictions/powermodule/

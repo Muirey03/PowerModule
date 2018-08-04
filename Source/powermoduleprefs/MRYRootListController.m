@@ -1,6 +1,6 @@
 #include "MRYRootListController.h"
 
-@implementation MRYRootListController
+@implementation MRYSmallCCXIListController
 
 - (NSArray *)specifiers {
 	if (!_specifiers) {
