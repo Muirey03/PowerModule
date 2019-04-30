@@ -4,8 +4,7 @@
 #import <spawn.h>
 #import <objc/runtime.h>
 
-#define PLIST_PATH @"/var/mobile/Library/Preferences/com.muirey03.powermoduleprefs.plist"
-#define prefsDict [NSDictionary dictionaryWithContentsOfFile:PLIST_PATH]
+#define prefsDict [[NSUserDefaults alloc] initWithSuiteName:@"com.muirey03.powermoduleprefs"]
 
 @interface SpringBoard
 -(void)_simulateLockButtonPress;

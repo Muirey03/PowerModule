@@ -101,6 +101,16 @@
             //Place UICacheBtn:
             [[self UICacheBtn] setMWidth:[self mWidth]];
             [self.view addSubview:[self UICacheBtn].view];
+
+            //Place powerDownBtn:
+            [[self powerDownBtn] setMWidth:[self mWidth]];
+            [self.view addSubview:[self powerDownBtn].view];
+            [self powerDownBtn].view.hidden = YES;
+
+            //Place lockBtn:
+            [[self lockBtn] setMWidth:[self mWidth]];
+            [self.view addSubview:[self lockBtn].view];
+            [self lockBtn].view.hidden = YES;
         }
     }
 }
@@ -112,20 +122,20 @@
 }
 
 //called before transitioning to the expanded content mode
--(void)willTransitionToExpandedContentMode:(BOOL)willTransition
+-(void)willTransitionToExpandedContentMode:(BOOL)expanded
 {
-    [[self respringBtn] setIsExpanded:willTransition];
-    [[self UICacheBtn] setIsExpanded:willTransition];
-    [[self safemodeBtn] setIsExpanded:willTransition];
-    [[self rebootBtn] setIsExpanded:willTransition];
-    [[self lockBtn] setIsExpanded:willTransition];
-    [[self powerDownBtn] setIsExpanded:willTransition];
+    [[self respringBtn] setIsExpanded:expanded];
+    [[self UICacheBtn] setIsExpanded:expanded];
+    [[self safemodeBtn] setIsExpanded:expanded];
+    [[self rebootBtn] setIsExpanded:expanded];
+    [[self lockBtn] setIsExpanded:expanded];
+    [[self powerDownBtn] setIsExpanded:expanded];
 
-    [self setIsExpanded:willTransition];
+    [self setIsExpanded:expanded];
 
     //the width of each button
     CGFloat bWidth = [self respringBtn].view.frame.size.width;
-    if (willTransition)
+    if (expanded)
     {
         //Place lockBtn:
         [[self lockBtn] setMWidth:0];
@@ -154,6 +164,9 @@
         [self rebootBtn].view.frame = CGRectMake(rightF, topF2, bLWidth, bWidth + topF1);
         [self powerDownBtn].view.frame = CGRectMake(leftF, topF3, bLWidth, bWidth + topF1);
         [self lockBtn].view.frame = CGRectMake(rightF, topF3, bLWidth, bWidth + topF1);
+
+        [self powerDownBtn].view.hidden = NO;
+        [self lockBtn].view.hidden = NO;
     }
     else
     {
@@ -161,21 +174,18 @@
         [[[self UICacheBtn] buttonContainer] buttonView].frame = CGRectMake(0, 0, bWidth, bWidth);
         [[[self safemodeBtn] buttonContainer] buttonView].frame = CGRectMake(0, 0, bWidth, bWidth);
         [[[self rebootBtn] buttonContainer] buttonView].frame = CGRectMake(0, 0, bWidth, bWidth);
+        [[[self lockBtn] buttonContainer] buttonView].frame = CGRectMake(0, 0, bWidth, bWidth);
+        [[[self powerDownBtn] buttonContainer] buttonView].frame = CGRectMake(0, 0, bWidth, bWidth);
 
-        //remove lockBtn:
-        [[self lockBtn] setMWidth:[self mWidth]];
-        [[self lockBtn].view removeFromSuperview];
-
-        //remove powerDownBtn:
-        [[self powerDownBtn] setMWidth:[self mWidth]];
-        [[self powerDownBtn].view removeFromSuperview];
+        [self powerDownBtn].view.hidden = YES;
+        [self lockBtn].view.hidden = YES;
     }
 
-    [[self respringBtn] setLabelsVisible:willTransition];
-    [[self UICacheBtn] setLabelsVisible:willTransition];
-    [[self safemodeBtn] setLabelsVisible:willTransition];
-    [[self rebootBtn] setLabelsVisible:willTransition];
-    [[self lockBtn] setLabelsVisible:willTransition];
-    [[self powerDownBtn] setLabelsVisible:willTransition];
+    [[self respringBtn] setLabelsVisible:expanded];
+    [[self UICacheBtn] setLabelsVisible:expanded];
+    [[self safemodeBtn] setLabelsVisible:expanded];
+    [[self rebootBtn] setLabelsVisible:expanded];
+    [[self lockBtn] setLabelsVisible:expanded];
+    [[self powerDownBtn] setLabelsVisible:expanded];
 }
 @end

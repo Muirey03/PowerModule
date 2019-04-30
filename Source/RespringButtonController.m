@@ -3,8 +3,7 @@
 #import <ControlCenterUIKit/CCUIRoundButton.h>
 #import <spawn.h>
 
-#define PLIST_PATH @"/var/mobile/Library/Preferences/com.muirey03.powermoduleprefs.plist"
-#define prefsDict [NSDictionary dictionaryWithContentsOfFile:PLIST_PATH]
+#define prefsDict [[NSUserDefaults alloc] initWithSuiteName:@"com.muirey03.powermoduleprefs"]
 
 @implementation RespringButtonController
 //here is where we set the width of the CCUILabeledRoundButton - the width of CCUIRoundButton is set automatically so we just use that to set the width of the CCUILabeledRoundButton

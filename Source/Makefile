@@ -8,5 +8,8 @@ $(BUNDLE_NAME)_LDFLAGS += $(THEOS_PROJECT_DIR)/Frameworks/ControlCenterUIKit.tbd
 $(BUNDLE_NAME)_INSTALL_PATH = /Library/ControlCenter/Bundles/
 
 include $(THEOS_MAKE_PATH)/bundle.mk
+
+after-install::
+	install.exec "killall -9 backboardd"
 SUBPROJECTS += powermoduleprefs
 include $(THEOS_MAKE_PATH)/aggregate.mk
