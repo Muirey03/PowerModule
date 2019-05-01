@@ -18,9 +18,9 @@ script:
 before_deploy:
 - git config --local user.name "Muirey03"
 - git config --local user.email "tommy.muir@btinternet.com"
+- export RELEASE_PKG_FILE=$(ls ./packages/*.deb)
 - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
 - git tag $TRAVIS_TAG
-- export RELEASE_PKG_FILE=$(ls ./packages/*.deb)
 
 deploy:
   provider: releases
@@ -32,4 +32,3 @@ deploy:
   on:
     repo: Muirey03/PowerModule
     branch: master
-    tags: true
