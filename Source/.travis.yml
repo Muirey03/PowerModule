@@ -1,5 +1,6 @@
 os: osx
 language: objective-c
+osx_image: xcode10.1
 sudo: false
 
 env:
@@ -17,6 +18,7 @@ before_install:
 
 script:
   # build!
+  - cd Source
   - make package FINALPACKAGE=1
 
 before_deploy:

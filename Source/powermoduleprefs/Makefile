@@ -7,6 +7,8 @@ PowerModulePrefs_FILES = MRYRootListController.m
 PowerModulePrefs_INSTALL_PATH = /Library/PreferenceBundles
 PowerModulePrefs_FRAMEWORKS = UIKit
 PowerModulePrefs_PRIVATE_FRAMEWORKS = Preferences
+PowerModulePrefs_LDFLAGS += -FFrameworks/
+PowerModulePrefs_CFLAGS = -fobjc-arc
 
 include $(THEOS_MAKE_PATH)/bundle.mk
 
