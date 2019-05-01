@@ -26,7 +26,7 @@ deploy:
   skip_cleanup: true
   api_key:
     secure: dbKQPhU+NaIIb92xiYvrBlhKRIdpydTiETbX1zwpehpFXDkmywfq2VVqh3vH0hWU+8su7GLtEFY2Av1XJa2GJGOuSaiVzX61ci+NaVq02E3xGye77s7xzpLrhXAv/B9ttfHaLVv6jPcUFFJogSATGwNmmfaL/6KNXrRNtoOE8EuMnlI1cq+I9AKnvrGkzGVUBJLF6NZZSDGDg3J8kq6v9CRRVA+9nil5W/jb3L+FD4P/6R0MuemjUuT61Gq8lHHMXKvLF681vZcOiWfxgvqmgRIBljWF4Y47jmvLeWIa9rwWOUWR5FUYvblmI33ogYHnQBSmE4rgO2P/rkZGBRX151N5aVbujBVZxFUiAG8pSfnLT1+QuSDlPhhLe49iBxF2mKW6u3UnKY6r/ZrTW8UnUFLUUwMFb51vFYNSYzNwGqc4nQfpF0LlaZ91GNPDGhwGGwXSpSm9NaclJITG1rE3cyrM4G6eyUwTW1llvpJVDzf07PuAIZwE++jhMoVdjuKNEcOWmR+jWKOn9vNwa/euqig6cY1LHMTDGcT9FNsQEZlpQel+3N/MfbDFEV2JEv2YwtlIDxkHC3HObrVpBuY3szjGne4oymSbxI8cCPghRIdvZwGA2yMuLRwV44SB3divLrweMI2Wgl5m65SAhmztfXnH/G8W1VpBOtwnsFBRvSs=
-  file: "./packages/com.muirey03.powermodule_1.2.3_iphoneos-arm.deb"
+  file: "./packages/*.deb"
   on:
     repo: Muirey03/PowerModule
     branch: master
