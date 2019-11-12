@@ -1,4 +1,4 @@
-ARCHS = armv7 arm64 arm64e
+export ARCHS = arm64 armv7 arm64e
 
 include $(THEOS)/makefiles/common.mk
 
@@ -13,5 +13,7 @@ include $(THEOS_MAKE_PATH)/bundle.mk
 
 after-install::
 	install.exec "killall -9 backboardd"
+
 SUBPROJECTS += powermoduleprefs
+SUBPROJECTS += mobileldrestart
 include $(THEOS_MAKE_PATH)/aggregate.mk

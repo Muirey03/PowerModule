@@ -12,6 +12,10 @@
     //this will be true if we are in the collapsed view, we don't want to position the buttons here if we are in the expanded view - that will be done in willTransitionToExpandedContentMode
     if (![self isExpanded] || self.view.window.bounds.size.width == 0)
     {
+        //constrain:
+        [[self buttonContainer] buttonView].translatesAutoresizingMaskIntoConstraints = NO;
+        [[[self buttonContainer] buttonView].leadingAnchor constraintEqualToAnchor:[self buttonContainer].leadingAnchor].active = YES;
+        [[[self buttonContainer] buttonView].trailingAnchor constraintEqualToAnchor:[self buttonContainer].trailingAnchor].active = YES;
         //get the width of the CCUIRoundButton
         CGFloat bWidth = [[self buttonContainer] buttonView].frame.size.width;
         //this is the smaller distance (from the left of the module to the left of the top-left button)

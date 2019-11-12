@@ -75,17 +75,18 @@
 {
     [super viewDidLayoutSubviews];
 
+
     if ([self respringBtn].view)
     {
         //get the width of the module and store it in mWidth
         [self getWidth];
 
-        //set the preferredExpandedContentWidth and height here, or elsewhere, I'm doing it here because I need the mWidth
-        _preferredExpandedContentWidth = [self mWidth] * 2.05;
-        _preferredExpandedContentHeight = [self preferredExpandedContentWidth] * 1.4;
-
         if (![self isExpanded])
         {
+            //set the preferredExpandedContentWidth and height here, or elsewhere, I'm doing it here because I need the mWidth
+            _preferredExpandedContentWidth = [self mWidth] * 2.05;
+            _preferredExpandedContentHeight = [self preferredExpandedContentWidth] * 1.4;
+
             //Place respringBtn:
             [[self respringBtn] setMWidth:[self mWidth]];
             [self.view addSubview:[self respringBtn].view];
