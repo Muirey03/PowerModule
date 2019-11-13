@@ -6,13 +6,6 @@
 
 #define prefsDict [[NSUserDefaults alloc] initWithSuiteName:@"com.muirey03.powermoduleprefs"]
 
-@interface FBSystemService : NSObject
-+(id)sharedInstance;                        //existing presence of object
--(void)shutdownAndReboot:(BOOL)arg1;    //shutting down with the option to reboot (the boolean value)
--(void)exitAndRelaunch:(BOOL)arg1;        //restart the FrontBoard process (thus restarting SpringBoard as well; the boolean value has no change, the process restarts anyway)
--(void)nonExistantMethod;                    //fake method to crash in a safe way, loading SafeMode
-@end
-
 @implementation RebootButtonController
 
 //here is where we set the width of the CCUILabeledRoundButton - the width of CCUIRoundButton is set automatically so we just use that to set the width of the CCUILabeledRoundButton
@@ -23,8 +16,7 @@
     {
         //constrain:
         [[self buttonContainer] buttonView].translatesAutoresizingMaskIntoConstraints = NO;
-        [[[self buttonContainer] buttonView].leadingAnchor constraintEqualToAnchor:[self buttonContainer].leadingAnchor].active = YES;
-        [[[self buttonContainer] buttonView].trailingAnchor constraintEqualToAnchor:[self buttonContainer].trailingAnchor].active = YES;
+        [[[self buttonContainer] buttonView].centerXAnchor constraintEqualToAnchor:[self buttonContainer].centerXAnchor].active = YES;
         //get the width of the CCUIRoundButton
         CGFloat bWidth = [[self buttonContainer] buttonView].frame.size.width;
         //this is the smaller distance (from the left of the module to the left of the top-left button)
@@ -71,7 +63,6 @@
 
 -(void)reboot
 {
-    //[[objc_getClass("FBSystemService") sharedInstance] shutdownAndReboot:YES];
     pid_t pid;
     int status;
     const char* args[] = {"mobileldrestart", NULL, NULL, NULL};

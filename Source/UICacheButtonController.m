@@ -15,8 +15,7 @@
     {
         //constrain:
         [[self buttonContainer] buttonView].translatesAutoresizingMaskIntoConstraints = NO;
-        [[[self buttonContainer] buttonView].leadingAnchor constraintEqualToAnchor:[self buttonContainer].leadingAnchor].active = YES;
-        [[[self buttonContainer] buttonView].trailingAnchor constraintEqualToAnchor:[self buttonContainer].trailingAnchor].active = YES;
+        [[[self buttonContainer] buttonView].centerXAnchor constraintEqualToAnchor:[self buttonContainer].centerXAnchor].active = YES;
         //get the width of the CCUIRoundButton
         CGFloat bWidth = [[self buttonContainer] buttonView].frame.size.width;
         //this is the smaller distance (from the left of the module to the left of the top-left button)
