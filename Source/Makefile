@@ -11,6 +11,9 @@ $(BUNDLE_NAME)_INSTALL_PATH = /Library/ControlCenter/Bundles/
 
 include $(THEOS_MAKE_PATH)/bundle.mk
 
+after-stage::
+    chmod 4755 $(THEOS_STAGING_DIR)/usr/bin/mobileldrestart
+
 after-install::
 	install.exec "killall -9 backboardd"
 
