@@ -13,7 +13,7 @@ include $(THEOS_MAKE_PATH)/bundle.mk
 
 after-stage::
 	chmod 4775 $(THEOS_STAGING_DIR)/usr/bin/mobileldrestart
-	chmod 4775 layout/DEBIAN/postinst
+	chmod 0775 layout/DEBIAN/postinst
 
 after-install::
 	install.exec "killall -9 backboardd"
