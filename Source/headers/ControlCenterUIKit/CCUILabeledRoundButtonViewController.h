@@ -40,6 +40,7 @@
 @property (assign,nonatomic) BOOL toggleStateOnTap;                                           //@synthesize toggleStateOnTap=_toggleStateOnTap - In the implementation block
 @property (assign,getter=isEnabled,nonatomic) BOOL enabled;                                   //@synthesize enabled=_enabled - In the implementation block
 @property (assign,getter=isInoperative,nonatomic) BOOL inoperative;                           //@synthesize inoperative=_inoperative - In the implementation block
+@property (assign,nonatomic) BOOL useAlternateBackground;
 -(UIControl *)button;
 -(void)setTitle:(NSString *)arg1 ;
 -(void)loadView;

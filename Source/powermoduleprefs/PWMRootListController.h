@@ -1,6 +1,6 @@
 #import <Preferences/PSListController.h>
 
-@interface MRYSmallCCXIListController : PSListController
+@interface PWMRootListController : PSListController
 -(void)creditsMethod;
 -(void)creatorMethod;
 @end

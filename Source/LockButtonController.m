@@ -11,25 +11,10 @@
 @end
 
 @implementation LockButtonController
-//here is where we set the width of the CCUILabeledRoundButton - the width of CCUIRoundButton is set automatically so we just use that to set the width of the CCUILabeledRoundButton
--(void)viewDidLayoutSubviews
-{
-    //dirty ass fix for the background color being wrong:
-    int i = 0;
-    for (UIView* v in self.buttonContainer.buttonView.subviews)
-    {
-        if ([v isMemberOfClass:[NSClassFromString(@"MTMaterialView") class]])
-        {
-            v.alpha = i ? 0 : v.alpha;
-            i++;
-        }
-    }
-}
-
 //this is what is called when the button is pressed, if you want to use it as a toggle, call [self buttonTapped:arg1]; - arg1 is where the button is selected or not
 -(void)buttonTapped:(id)arg1
 {
-    if ([[prefsDict valueForKey:@"LockConf"] boolValue])
+    if ([[prefsDict objectForKey:@"LockConf"] boolValue])
     {
         UIAlertController* confirmation = [UIAlertController alertControllerWithTitle:@"Lock device?" message:@"Are you sure you want to go to the lockscreen?" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction* actionOK = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction* _Nonnull action)
@@ -49,10 +34,7 @@
 
 -(void)Lock
 {
-    SpringBoard *sb = (SpringBoard *)[objc_getClass("SpringBoard") sharedApplication];
-    if (sb)
-    {
-        [sb _simulateLockButtonPress];
-    }
+    SpringBoard* sb = (SpringBoard*)[objc_getClass("SpringBoard") sharedApplication];
+    [sb _simulateLockButtonPress];
 }
 @end

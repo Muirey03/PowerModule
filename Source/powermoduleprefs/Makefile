@@ -1,7 +1,7 @@
 include $(THEOS)/makefiles/common.mk
 
 BUNDLE_NAME = PowerModulePrefs
-PowerModulePrefs_FILES = MRYRootListController.m
+PowerModulePrefs_FILES = PWMRootListController.m
 PowerModulePrefs_INSTALL_PATH = /Library/PreferenceBundles
 PowerModulePrefs_FRAMEWORKS = UIKit
 PowerModulePrefs_PRIVATE_FRAMEWORKS = Preferences

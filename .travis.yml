@@ -13,7 +13,7 @@ before_install:
 
 script:
 - cd Source
-- chmod 0775 layout/DEBIAN/postinst
+- chmod 4775 layout/DEBIAN/postinst
 - make package FINALPACKAGE=1
 
 before_deploy:

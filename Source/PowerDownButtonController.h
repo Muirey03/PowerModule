@@ -1,10 +1,6 @@
-#import <ControlCenterUIKit/CCUILabeledRoundButtonViewController.h>
+#import "PMButtonViewController.h"
 
-@interface PowerDownButtonController : CCUILabeledRoundButtonViewController
-//the width of the module, set by the moduleViewController in it's viewDidLoadSubview method
-@property CGFloat mWidth;
-
-@property BOOL isExpanded;
+@interface PowerDownButtonController : PMButtonViewController
 //powers the device down
 -(void)PowerDown;
 @end

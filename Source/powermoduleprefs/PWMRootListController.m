@@ -1,12 +1,10 @@
-#include "MRYRootListController.h"
+#include "PWMRootListController.h"
 
-@implementation MRYSmallCCXIListController
-
-- (NSArray *)specifiers {
-	if (!_specifiers) {
+@implementation PWMRootListController
+-(NSArray*)specifiers
+{
+	if (!_specifiers)
 		_specifiers = [self loadSpecifiersFromPlistName:@"Root" target:self];
-	}
-
 	return _specifiers;
 }
 
@@ -19,5 +17,4 @@
 {
 	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.reddit.com/user/thecoderkiller"]];
 }
-
 @end

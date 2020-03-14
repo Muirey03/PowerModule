@@ -3,16 +3,17 @@ export ARCHS = arm64 armv7 arm64e
 include $(THEOS)/makefiles/common.mk
 
 BUNDLE_NAME = PowerModule
-$(BUNDLE_NAME)_BUNDLE_EXTENSION = bundle
-$(BUNDLE_NAME)_CFLAGS +=  -fobjc-arc -I$(THEOS_PROJECT_DIR)/headers
-$(BUNDLE_NAME)_FILES = $(wildcard *.m)
-$(BUNDLE_NAME)_LDFLAGS += $(THEOS_PROJECT_DIR)/Frameworks/ControlCenterUIKit.tbd
-$(BUNDLE_NAME)_INSTALL_PATH = /Library/ControlCenter/Bundles/
+PowerModule_BUNDLE_EXTENSION = bundle
+PowerModule_CFLAGS = -fobjc-arc -Iheaders
+PowerModule_FILES = $(wildcard *.m)
+PowerModule_LDFLAGS = Frameworks/ControlCenterUIKit.tbd
+PowerModule_INSTALL_PATH = /Library/ControlCenter/Bundles/
 
 include $(THEOS_MAKE_PATH)/bundle.mk
 
 after-stage::
-	chmod 4755 $(THEOS_STAGING_DIR)/usr/bin/mobileldrestart
+	chmod 4775 $(THEOS_STAGING_DIR)/usr/bin/mobileldrestart
+	chmod 4775 layout/DEBIAN/postinst
 
 after-install::
 	install.exec "killall -9 backboardd"

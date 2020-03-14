@@ -8,7 +8,63 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>Confirmations</string>
+			<string>Module Size</string>
+			<key>footerText</key>
+			<string>Will always be 1x1 if Prysm is installed</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSegmentCell</string>
+			<key>key</key>
+			<string>moduleSize</string>
+			<key>validValues</key>
+			<array>
+				<string>1x1</string>
+				<string>2x2</string>
+			</array>
+			<key>validTitles</key>
+			<array>
+				<string>1x1</string>
+				<string>2x2</string>
+			</array>
+			<key>default</key>
+			<string>2x2</string>
+			<key>defaults</key>
+			<string>com.muirey03.powermoduleprefs</string>
+		</dict>
+
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Reboot Action</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSegmentCell</string>
+			<key>key</key>
+			<string>rebootAction</string>
+			<key>validValues</key>
+			<array>
+				<string>reboot</string>
+				<string>ldrestart</string>
+			</array>
+			<key>validTitles</key>
+			<array>
+				<string>Reboot</string>
+				<string>ldrestart</string>
+			</array>
+			<key>default</key>
+			<string>ldrestart</string>
+			<key>defaults</key>
+			<string>com.muirey03.powermoduleprefs</string>
+		</dict>
+
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>confirmations</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -20,7 +76,7 @@
 			<key>key</key>
 			<string>RespringConf</string>
 			<key>label</key>
-			<string>Respring Confirmation?</string>
+			<string>Respring confirmation</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -32,7 +88,7 @@
 			<key>key</key>
 			<string>RebootConf</string>
 			<key>label</key>
-			<string>Reboot Confirmation?</string>
+			<string>Reboot confirmation</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -44,7 +100,7 @@
 			<key>key</key>
 			<string>UICacheConf</string>
 			<key>label</key>
-			<string>UICache Confirmation?</string>
+			<string>UICache confirmation</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -56,7 +112,7 @@
 			<key>key</key>
 			<string>SafemodeConf</string>
 			<key>label</key>
-			<string>Safemode Confirmation?</string>
+			<string>Safemode confirmation</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -68,7 +124,7 @@
 			<key>key</key>
 			<string>LockConf</string>
 			<key>label</key>
-			<string>Lock screen Confirmation?</string>
+			<string>Lock screen confirmation</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -80,7 +136,7 @@
 			<key>key</key>
 			<string>PowerDownConf</string>
 			<key>label</key>
-			<string>Power down Confirmation?</string>
+			<string>Power down confirmation</string>
 		</dict>
 
 		<dict>

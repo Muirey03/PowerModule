@@ -9,7 +9,7 @@
 		<key>cell</key>
 		<string>PSLinkCell</string>
 		<key>detail</key>
-		<string>MRYRootListController</string>
+		<string>PWMRootListController</string>
 		<key>icon</key>
 		<string>SettingsIcon.png</string>
 		<key>isController</key>

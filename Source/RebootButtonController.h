@@ -1,10 +1,6 @@
-#import <ControlCenterUIKit/CCUILabeledRoundButtonViewController.h>
+#import "PMButtonViewController.h"
 
-@interface RebootButtonController : CCUILabeledRoundButtonViewController
-//the width of the module, set by the moduleViewController in it's viewDidLoadSubview method
-@property CGFloat mWidth;
-
-@property BOOL isExpanded;
+@interface RebootButtonController : PMButtonViewController
 //reboot the device
 -(void)reboot;
 @end

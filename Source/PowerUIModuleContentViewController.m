@@ -1,192 +1,181 @@
 #import "PowerUIModuleContentViewController.h"
-#import <ControlCenterUIKit/CCUILabeledRoundButtonViewController.h>
+#import "PMButtonViewController.h"
 #import "RespringButtonController.h"
 #import "RebootButtonController.h"
 #import "SafemodeButtonController.h"
 #import "UICacheButtonController.h"
 #import "PowerDownButtonController.h"
 #import "LockButtonController.h"
-#import <ControlCenterUIKit/CCUILabeledRoundButton.h>
-#import <ControlCenterUIKit/CCUIRoundButton.h>
 
 @implementation PowerUIModuleContentViewController
-//This is where you initialize any controllers for objects from ControlCenterUIKit
--(id)initWithNibName:(id)arg1 bundle:(id)arg2
+-(instancetype)initWithSmallSize:(BOOL)small
 {
-    self = [super initWithNibName:arg1 bundle:arg2];
+    _small = small;
+    return [self init];
+}
+
+//This is where you initialize any controllers for objects from ControlCenterUIKit
+-(instancetype)initWithNibName:(NSString*)name bundle:(NSBundle*)bundle
+{
+    self = [super initWithNibName:name bundle:bundle];
     if (self)
     {
-        /* Initialize CCUILabeledRoundButtonViewControllers here: */
+        _buttons = [NSMutableArray new];
+        self.view.clipsToBounds = YES;
 
+        /* Initialize PMButtonViewControllers here: */
         //initialize respringBtn
-        [self setRespringBtn:[[RespringButtonController alloc]initWithGlyphImage:[UIImage imageNamed:@"Respring" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil] highlightColor:[UIColor greenColor] useLightStyle:YES]];
-        [[self respringBtn] setEnabled:YES];
-        [[self respringBtn] setTitle:@"Respring"];
-        [[self respringBtn] setLabelsVisible:NO];
-        [[self respringBtn] setIsExpanded:NO];
-        [self addChildViewController:[self respringBtn]];
+        _respringBtn = [[RespringButtonController alloc] initWithGlyphImage:[UIImage imageNamed:@"Respring" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil] highlightColor:[UIColor greenColor] useLightStyle:YES];
+        [self setupButtonViewController:_respringBtn title:@"Respring" hidden:NO];
 
         //initialize UICacheBtn
-        [self setUICacheBtn:[[UICacheButtonController alloc]initWithGlyphImage:[UIImage imageNamed:@"UICache" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil] highlightColor:[UIColor greenColor] useLightStyle:YES]];
-        [[self UICacheBtn] setEnabled:YES];
-        [[self UICacheBtn] setTitle:@"UICache"];
-        [[self UICacheBtn] setLabelsVisible:NO];
-        [[self UICacheBtn] setIsExpanded:NO];
-        [self addChildViewController:[self UICacheBtn]];
+        _UICacheBtn = [[UICacheButtonController alloc] initWithGlyphImage:[UIImage imageNamed:@"UICache" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil] highlightColor:[UIColor greenColor] useLightStyle:YES];
+        [self setupButtonViewController:_UICacheBtn title:@"UICache" hidden:_small];
 
         //initialize rebootBtn
-        [self setRebootBtn:[[RebootButtonController alloc]initWithGlyphImage:[UIImage imageNamed:@"Reboot" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil] highlightColor:[UIColor greenColor] useLightStyle:YES]];
-        [[self rebootBtn] setEnabled:YES];
-        [[self rebootBtn] setTitle:@"Reboot"];
-        [[self rebootBtn] setLabelsVisible:NO];
-        [[self rebootBtn] setIsExpanded:NO];
-        [self addChildViewController:[self rebootBtn]];
+        _rebootBtn = [[RebootButtonController alloc]initWithGlyphImage:[UIImage imageNamed:@"Reboot" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil] highlightColor:[UIColor greenColor] useLightStyle:YES];
+        [self setupButtonViewController:_rebootBtn title:@"Reboot" hidden:_small];
 
         //initialize safemodeBtn
-        [self setSafemodeBtn:[[SafemodeButtonController alloc]initWithGlyphImage:[UIImage imageNamed:@"Safemode" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil] highlightColor:[UIColor greenColor] useLightStyle:YES]];
-        [[self safemodeBtn] setEnabled:YES];
-        [[self safemodeBtn] setTitle:@"Safemode"];
-        [[self safemodeBtn] setLabelsVisible:NO];
-        [[self safemodeBtn] setIsExpanded:NO];
-        [self addChildViewController:[self safemodeBtn]];
+        _safemodeBtn = [[SafemodeButtonController alloc] initWithGlyphImage:[UIImage imageNamed:@"Safemode" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil] highlightColor:[UIColor greenColor] useLightStyle:YES];
+        [self setupButtonViewController:_safemodeBtn title:@"Safemode" hidden:_small];
 
         //initialize powerDownBtn
-        [self setPowerDownBtn:[[PowerDownButtonController alloc]initWithGlyphImage:[UIImage imageNamed:@"Power" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil] highlightColor:[UIColor greenColor] useLightStyle:YES]];
-        [[self powerDownBtn] setEnabled:YES];
-        [[self powerDownBtn] setTitle:@"Power down"];
-        [[self powerDownBtn] setLabelsVisible:NO];
-        [[self powerDownBtn] setIsExpanded:NO];
-        [self addChildViewController:[self powerDownBtn]];
+        _powerDownBtn = [[PowerDownButtonController alloc]initWithGlyphImage:[UIImage imageNamed:@"Power" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil] highlightColor:[UIColor greenColor] useLightStyle:YES];
+        [self setupButtonViewController:_powerDownBtn title:@"Power Down" hidden:YES];
 
         //initialize lockBtn
-        [self setLockBtn:[[LockButtonController alloc]initWithGlyphImage:[UIImage imageNamed:@"Lock" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil] highlightColor:[UIColor greenColor] useLightStyle:YES]];
-        [[self lockBtn] setEnabled:YES];
-        [[self lockBtn] setTitle:@"Lock screen"];
-        [[self lockBtn] setLabelsVisible:NO];
-        [[self lockBtn] setIsExpanded:NO];
-        [self addChildViewController:[self lockBtn]];
+        _lockBtn = [[LockButtonController alloc]initWithGlyphImage:[UIImage imageNamed:@"Lock" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil] highlightColor:[UIColor greenColor] useLightStyle:YES];
+        [self setupButtonViewController:_lockBtn title:@"Lock Screen" hidden:YES];
 	}
-
     return self;
 }
 
-//This is where you add your subviews (this is the first method when self.view.bounds.size.width doesn't return 0)
--(void)viewDidLayoutSubviews
+-(void)viewDidLoad
 {
-    [super viewDidLayoutSubviews];
+    [super viewDidLoad];
+    
+    //calculate expanded size:
+    _preferredExpandedContentWidth = [UIScreen mainScreen].bounds.size.width * 0.856;
+    _preferredExpandedContentHeight = _preferredExpandedContentWidth * 1.4;
+}
 
+-(void)setupButtonViewController:(PMButtonViewController*)button title:(NSString*)title hidden:(BOOL)hidden
+{
+    button.title = title;
+    button.labelsVisible = hidden;
+    button.view.alpha = (CGFloat)!hidden;
+    button.collapsedAlpha = button.view.alpha;
+    if ([button respondsToSelector:@selector(setUseAlternateBackground:)])
+        button.useAlternateBackground = NO;
+    [self addChildViewController:button];
+    [self.view addSubview:button.view];
+    [_buttons addObject:button];
 
-    if ([self respringBtn].view)
+    //initialise default constraints:
+    button.view.translatesAutoresizingMaskIntoConstraints = NO;
+    button.widthConstraint = [button.view.widthAnchor constraintEqualToConstant:0];
+    button.heightConstraint = [button.view.heightAnchor constraintEqualToConstant:0];
+    button.centerXConstraint = [button.view.centerXAnchor constraintEqualToAnchor:self.view.leadingAnchor];
+    button.topConstraint = [button.view.topAnchor constraintEqualToAnchor:self.view.topAnchor];
+    [NSLayoutConstraint activateConstraints:@[button.widthConstraint, button.heightConstraint, button.centerXConstraint, button.topConstraint]];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+
+    //perform initial layout:
+    [self layoutCollapsed];
+}
+
+-(void)layoutCollapsed
+{
+    //calculate constants needed for layout:
+    CGSize size = self.view.frame.size;
+    CGFloat btnSize = [_respringBtn.view sizeThatFits:size].width;
+    CGFloat padding = (size.width - (_small ? 1 : 2) * btnSize) / (_small ? 2 : 3);
+    CGFloat smallCenter = padding + btnSize / 2;
+
+    //resize buttons:
+    for (PMButtonViewController* btn in _buttons)
     {
-        //get the width of the module and store it in mWidth
-        [self getWidth];
-
-        if (![self isExpanded])
-        {
-            //set the preferredExpandedContentWidth and height here, or elsewhere, I'm doing it here because I need the mWidth
-            _preferredExpandedContentWidth = [self mWidth] * 2.05;
-            _preferredExpandedContentHeight = [self preferredExpandedContentWidth] * 1.4;
-
-            //Place respringBtn:
-            [[self respringBtn] setMWidth:[self mWidth]];
-            [self.view addSubview:[self respringBtn].view];
-
-            //Place rebootBtn:
-            [[self rebootBtn] setMWidth:[self mWidth]];
-            [self.view addSubview:[self rebootBtn].view];
-
-            //Place safemodeBtn:
-            [[self safemodeBtn] setMWidth:[self mWidth]];
-            [self.view addSubview:[self safemodeBtn].view];
-
-            //Place UICacheBtn:
-            [[self UICacheBtn] setMWidth:[self mWidth]];
-            [self.view addSubview:[self UICacheBtn].view];
-
-            //Place powerDownBtn:
-            [[self powerDownBtn] setMWidth:[self mWidth]];
-            [self.view addSubview:[self powerDownBtn].view];
-            [self powerDownBtn].view.hidden = YES;
-
-            //Place lockBtn:
-            [[self lockBtn] setMWidth:[self mWidth]];
-            [self.view addSubview:[self lockBtn].view];
-            [self lockBtn].view.hidden = YES;
-        }
+        btn.view.alpha = btn.collapsedAlpha;
+        btn.labelsVisible = NO;
+        btn.widthConstraint.constant = btnSize, btn.heightConstraint.constant = btnSize;
     }
+
+    //reposition buttons:
+    _respringBtn.centerXConstraint.constant = smallCenter;
+    _respringBtn.topConstraint.constant = padding;
+    _UICacheBtn.centerXConstraint.constant = size.width - smallCenter;
+    _UICacheBtn.topConstraint.constant = padding;
+    _rebootBtn.centerXConstraint.constant = size.width - smallCenter;
+    _rebootBtn.topConstraint.constant = 2 * padding + btnSize;
+    _safemodeBtn.centerXConstraint.constant = smallCenter;
+    _safemodeBtn.topConstraint.constant = 2 * padding + btnSize;
+    _powerDownBtn.centerXConstraint.constant = smallCenter;
+    _powerDownBtn.topConstraint.constant = 3 * padding + 2 * btnSize;
+    _lockBtn.centerXConstraint.constant = size.width - smallCenter;
+    _lockBtn.topConstraint.constant = 3 * padding + 2 * btnSize;
 }
 
-//gets the width of the module and store it in mWidth
--(void)getWidth
+-(void)layoutExpanded
 {
-    [self setMWidth:self.view.bounds.size.width];
+    //calculate constants needed for layout:
+    CGSize size = self.view.frame.size;
+    CGFloat oldBtnWidth = _respringBtn.view.intrinsicContentSize.width;
+    CGFloat ySpacing = (size.height - 3 * oldBtnWidth) / 7;
+    CGFloat xOffset = (size.width - 2 * oldBtnWidth) / 4;
+    CGFloat xCenterLeft = xOffset + oldBtnWidth / 2;
+    CGFloat xCenterRight = size.width - xCenterLeft;
+    CGFloat newBtnHeight = (size.height - 4 * ySpacing) / 3;
+
+    //resize buttons:
+    for (PMButtonViewController* btn in _buttons)
+    {
+        btn.view.alpha = 1;
+        btn.labelsVisible = YES;
+        btn.widthConstraint.constant = (size.width / 2), btn.heightConstraint.constant = newBtnHeight;
+    }
+
+    //reposition buttons:
+    _respringBtn.centerXConstraint.constant = xCenterLeft;
+    _respringBtn.topConstraint.constant = ySpacing;
+    _UICacheBtn.centerXConstraint.constant = xCenterRight;
+    _UICacheBtn.topConstraint.constant = ySpacing;
+    _rebootBtn.centerXConstraint.constant = xCenterRight;
+    _rebootBtn.topConstraint.constant = 2 * ySpacing + newBtnHeight;
+    _safemodeBtn.centerXConstraint.constant = xCenterLeft;
+    _safemodeBtn.topConstraint.constant = 2 * ySpacing + newBtnHeight;
+    _powerDownBtn.centerXConstraint.constant = xCenterLeft;
+    _powerDownBtn.topConstraint.constant = 3 * ySpacing + 2 * newBtnHeight;
+    _lockBtn.centerXConstraint.constant = xCenterRight;
+    _lockBtn.topConstraint.constant = 3 * ySpacing + 2 * newBtnHeight;
 }
 
-//called before transitioning to the expanded content mode
 -(void)willTransitionToExpandedContentMode:(BOOL)expanded
 {
-    [[self respringBtn] setIsExpanded:expanded];
-    [[self UICacheBtn] setIsExpanded:expanded];
-    [[self safemodeBtn] setIsExpanded:expanded];
-    [[self rebootBtn] setIsExpanded:expanded];
-    [[self lockBtn] setIsExpanded:expanded];
-    [[self powerDownBtn] setIsExpanded:expanded];
+    //keep track of the expansion state:
+    _expanded = expanded;
+}
 
-    [self setIsExpanded:expanded];
+-(void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
 
-    //the width of each button
-    CGFloat bWidth = [self respringBtn].view.frame.size.width;
-    if (expanded)
-    {
-        //Place lockBtn:
-        [[self lockBtn] setMWidth:0];
-        [self.view addSubview:[self lockBtn].view];
+    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context){
+        if (_expanded)
+            [self layoutExpanded];
+        else
+            [self layoutCollapsed];
+        //force animated constraint updates:
+        [self.view layoutIfNeeded];
+    } completion:nil];
+}
 
-        //Place powerDownBtn:
-        [[self powerDownBtn] setMWidth:0];
-        [self.view addSubview:[self powerDownBtn].view];
-
-        //the width of each CCUILabeledRoundButton
-        CGFloat bLWidth = bWidth * 2.48;
-        //this is the smaller distance (from the left of the module to the left of the top-left button)
-        CGFloat leftF = ([self preferredExpandedContentWidth] - (2 * bLWidth)) / 3;
-        //this is the longer distance (from the left of the module to the left of the top-right button)
-        CGFloat rightF = [self preferredExpandedContentWidth] - leftF - bLWidth;
-        //this is the distance from the top for the first row
-        CGFloat topF1 = ([self preferredExpandedContentHeight] - (3 * bWidth)) / 7;
-        //this is the distance from the top for the second row
-        CGFloat topF2 = (topF1 * 3) + bWidth;
-        //this is the distance from the top for the second row
-        CGFloat topF3 = (topF1 * 5) + (bWidth * 2);
-
-        [self respringBtn].view.frame = CGRectMake(leftF, topF1, bLWidth, bWidth + topF1);
-        [self UICacheBtn].view.frame = CGRectMake(rightF, topF1, bLWidth, bWidth + topF1);
-        [self safemodeBtn].view.frame = CGRectMake(leftF, topF2, bLWidth, bWidth + topF1);
-        [self rebootBtn].view.frame = CGRectMake(rightF, topF2, bLWidth, bWidth + topF1);
-        [self powerDownBtn].view.frame = CGRectMake(leftF, topF3, bLWidth, bWidth + topF1);
-        [self lockBtn].view.frame = CGRectMake(rightF, topF3, bLWidth, bWidth + topF1);
-
-        [self powerDownBtn].view.hidden = NO;
-        [self lockBtn].view.hidden = NO;
-    }
-    else
-    {
-        [[[self respringBtn] buttonContainer] buttonView].frame = CGRectMake(0, 0, bWidth, bWidth);
-        [[[self UICacheBtn] buttonContainer] buttonView].frame = CGRectMake(0, 0, bWidth, bWidth);
-        [[[self safemodeBtn] buttonContainer] buttonView].frame = CGRectMake(0, 0, bWidth, bWidth);
-        [[[self rebootBtn] buttonContainer] buttonView].frame = CGRectMake(0, 0, bWidth, bWidth);
-        [[[self lockBtn] buttonContainer] buttonView].frame = CGRectMake(0, 0, bWidth, bWidth);
-        [[[self powerDownBtn] buttonContainer] buttonView].frame = CGRectMake(0, 0, bWidth, bWidth);
-
-        [self powerDownBtn].view.hidden = YES;
-        [self lockBtn].view.hidden = YES;
-    }
-
-    [[self respringBtn] setLabelsVisible:expanded];
-    [[self UICacheBtn] setLabelsVisible:expanded];
-    [[self safemodeBtn] setLabelsVisible:expanded];
-    [[self rebootBtn] setLabelsVisible:expanded];
-    [[self lockBtn] setLabelsVisible:expanded];
-    [[self powerDownBtn] setLabelsVisible:expanded];
+-(BOOL)_canShowWhileLocked
+{
+	return YES;
 }
 @end
