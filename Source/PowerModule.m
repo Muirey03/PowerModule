@@ -1,6 +1,6 @@
 #import "PowerModule.h"
 #import "PowerUIModuleContentViewController.h"
-#import <ControlCenterUI/ControlCenterUI-Structs.h>
+#import <ControlCenterUIKit/ControlCenterUI-Structs.h>
 #import <objc/runtime.h>
 
 @implementation PowerModule
