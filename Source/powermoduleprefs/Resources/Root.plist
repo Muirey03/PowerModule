@@ -9,8 +9,6 @@
 			<string>PSGroupCell</string>
 			<key>label</key>
 			<string>Module Size</string>
-			<key>footerText</key>
-			<string>Will always be 1x1 if Prysm is installed</string>
 		</dict>
 		<dict>
 			<key>cell</key>

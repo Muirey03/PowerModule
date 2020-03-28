@@ -21,9 +21,6 @@
 
 -(BOOL)smallSize
 {
-    BOOL (^isPrysmInstalled)(void) = ^BOOL{
-        return !!objc_getClass("PrysmModuleInstanceManager");
-    };
-    return isPrysmInstalled() || [[[[NSUserDefaults alloc] initWithSuiteName:@"com.muirey03.powermoduleprefs"] objectForKey:@"moduleSize"] isEqualToString:@"1x1"];
+    return [[[[NSUserDefaults alloc] initWithSuiteName:@"com.muirey03.powermoduleprefs"] objectForKey:@"moduleSize"] isEqualToString:@"1x1"];
 }
 @end
